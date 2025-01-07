@@ -1,0 +1,42 @@
+define Derived<_T, _U> = _T: _T of _U
+
+
+define Same<_T, _U> = _T: _T == _U or Derived<_T, _U>
+
+
+define Convertible<_T, _U> = _T: _T == _U or _T.cast<_U>()
+
+
+define Iterable<_Tp> = class _Tp: _Tp.iter()
+
+
+define Callable<_Tp> = class _Tp: Same<_Tp, Function> or _Tp.call()
+
+
+define SignedInt<_Tp> = _Tp: Convertible<_Tp, int8> or Convertible<_Tp, int16>
+    or Convertible<_Tp, int32> or Convertible<_Tp, int64>
+
+
+define UnsignedInt<_Tp> = _Tp: Convertible<_Tp, uint8> or Convertible<_Tp, uint16>
+    or Convertible<_Tp, uint32> or Convertible<_Tp, uint64>
+
+
+define Int<_Tp> = _Tp: SignedInt<_Tp> or UnsignedInt<_Tp>
+
+
+define Float<_Tp> = _Tp: Convertible<_Tp, float32> or Convertible<_Tp, float64>
+
+
+define Bool<_Tp> = _Tp: Convertible<_Tp, Bool>
+
+
+define Integral<_Tp> = _Tp: Int<_Tp> or Float<_Tp> or Bool<_Tp>
+
+
+define Tiny<_Tp> = _Tp: sizeof(_Tp) <= 8
+
+
+define Small<_Tp> = _Tp: sizeof(_Tp) <= 16
+
+
+define Big<_Tp> = _Tp: sizeof(_Tp) > 16

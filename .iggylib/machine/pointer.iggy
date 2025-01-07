@@ -1,0 +1,8 @@
+@std_libiggy
+
+
+
+define pointer<_Tp> = _IGGY_STD_PTR<_Tp>
+
+
+

@@ -1,0 +1,45 @@
+@std_libiggy
+
+
+
+define StringLit<type _Tp> = _IGGY_STD_PTR<const _Tp>
+
+
+
+@noref
+class basestring<type _Tp>{
+  private StringLit<Tp> data;
+  private usize_int size;
+
+
+  @implicit
+  void basestring(StringLit<_Tp> lit){
+    if (_IGGY_SIZE_LIT) this.size = _IGGY_SIZE_LIT
+    else this.size = strlen(lit)
+
+    this.data = lit
+  }
+
+
+  @noexcept
+  basestring<_Tp> copy(){
+    string dst;
+
+    dst.data = malloc(this.size * sizeof(_Tp));
+    strcpy(dst.data, this.data);
+
+    dst.size = size;
+
+    return dst;
+  }
+
+
+  // ...
+}
+
+
+
+define string = basestring<char>;
+define u8string = basestring<char8>;
+define u16string = basestring<char16>;
+define u32string = basestring<char32>;

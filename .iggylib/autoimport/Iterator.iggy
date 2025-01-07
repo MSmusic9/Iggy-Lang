@@ -1,0 +1,38 @@
+@std_libiggy
+
+
+
+// used for containers
+define Iterable<_T> = class _T: _T.iter;
+
+
+
+class Iterator<class _NodeT: _NodeT.value, _NodeT.next>{
+  private _NodeT start;
+
+
+  void Iterator(_NodeT start){
+    this.start = start;
+  }
+
+
+  _IGGY_STD_PTR<_NodeT> iter(){
+    if (!start.next) return 0;
+    start = start.next;
+    return this.start;
+  }
+}
+
+
+
+class Iterator<_Tp>{
+  private _IGGY_STD_PTR<_Tp> inner;
+
+
+  void Iterator(ref<_Tp> start){
+    this.inner = start;
+  }
+
+
+  
+}

@@ -1,0 +1,8 @@
+version: 14.0.6
+sources link: https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz
+platform: Windows 10.0.19041.1415
+toolchain: MSVC 19.32.31332
+cmake: 3.23.2
+profile: Release
+cmake config: -Thost=x64 -DLLVM_ENABLE_EH=ON -DLLVM_ENABLE_RTTI=ON -DCMAKE_BUILD_TYPE=Release
+cmake build: --build . --config Release

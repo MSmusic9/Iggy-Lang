@@ -1,0 +1,9 @@
+import "autoimport/string.iggy"
+
+
+if (WIN32 || WIN64) define wchar_t = char16
+else define wchar_t = char32
+
+
+
+define wstring = basestring<wchar_t>;
